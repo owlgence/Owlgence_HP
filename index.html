@@ -160,8 +160,53 @@
 </head>
 <body class="bg-navy text-offwhite antialiased">
 
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-sm px-10 py-4 flex items-center justify-between transition-all duration-300">
+        <!-- Logo + Brand Name -->
+        <div class="flex items-center gap-3">
+            <img src="./assets/owlgence-logo.png" alt="Owlgence logo" class="h-12 w-auto object-contain">
+            <span class="text-white text-xl font-semibold tracking-wide">Owlgence</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex gap-10 text-white text-base">
+            <a href="#service" class="hover:text-sky-400 transition">Service</a>
+            <a href="#works" class="hover:text-sky-400 transition">Works</a>
+            <a href="#vision" class="hover:text-sky-400 transition">Vision</a>
+            <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white hover:text-cyan transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+    
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-navy bg-opacity-95 backdrop-blur-sm z-40 hidden">
+        <div class="flex justify-between items-center p-8">
+            <div class="flex items-center gap-3">
+                <img src="./assets/owlgence-logo.png" alt="Owlgence logo" class="h-12 w-auto object-contain">
+                <span class="text-white text-xl font-semibold tracking-wide">Owlgence</span>
+            </div>
+            <button id="mobile-menu-close" class="text-white hover:text-cyan transition-colors duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center gap-8 text-white text-xl">
+            <a href="#service" class="hover:text-cyan transition-colors duration-300">Service</a>
+            <a href="#works" class="hover:text-cyan transition-colors duration-300">Works</a>
+            <a href="#vision" class="hover:text-cyan transition-colors duration-300">Vision</a>
+            <a href="#contact" class="hover:text-cyan transition-colors duration-300">Contact</a>
+        </nav>
+    </div>
+
     <!-- ① Hero Section -->
-    <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center relative">
+    <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center relative pt-32 md:pt-40">
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-fade-in-up gradient-text">
                 AIで、思考を加速する。
@@ -453,6 +498,51 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        // Open mobile menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+        
+        // Close mobile menu
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // Close mobile menu when clicking on nav links
+        const mobileNavLinks = mobileMenu.querySelectorAll('nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-navy', 'bg-opacity-95');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.remove('bg-navy', 'bg-opacity-95');
+                header.classList.add('bg-transparent');
+            }
+        });
+    </script>
 
 </body>
 </html>
