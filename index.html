@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Owlgence（オウルジェンス）- AI導入と業務自動化を通じて、ビジネスと個人の成長を支援するコンサルティングブランド">
+    <title>Owlgence - AIで、思考を加速する。</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+        
+        /* Owl eye glow effect */
+        .hero-gradient {
+            background: linear-gradient(135deg, #0B0F19 0%, #1a1f2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .hero-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Glass morphism effect */
+        .glass-card {
+            background: rgba(248, 249, 250, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(248, 249, 250, 0.1);
+        }
+        
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #F8F9FA 0%, #38BDF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Gradient button */
+        .btn-gradient {
+            background: linear-gradient(135deg, #0B0F19 0%, #38BDF8 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #38BDF8 0%, #0B0F19 100%);
+            transform: scale(1.05);
+        }
+        
+        /* Section divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #38BDF8 50%, transparent 100%);
+            opacity: 0.3;
+        }
+        
+        /* Scroll animations */
+        @keyframes fadeInUpScroll {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-animate {
+            opacity: 0;
+            animation: fadeInUpScroll 0.8s ease-out forwards;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0B0F19',
+                        offwhite: '#F8F9FA',
+                        cyan: '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-navy text-offwhite antialiased">
+
+    <!-- ① Hero Section -->
+    <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center relative">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-fade-in-up gradient-text">
+                AIで、思考を加速する。
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animate-delay-1">
+                Owlgenceは、AI導入と業務自動化を通じて、ビジネスと個人の成長を支援するコンサルティングブランドです。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-2">
+                <a href="#service" class="px-8 py-4 btn-gradient text-offwhite font-semibold rounded-lg">
+                    サービスを見る
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-cyan text-cyan font-semibold rounded-lg hover:bg-cyan hover:text-navy transition-all duration-300">
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ② About Section -->
+    <section id="about" class="py-32 bg-gradient-to-b from-navy to-gray-900 relative">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">About</h2>
+                <p class="text-gray-400 text-sm">私たちについて</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        Owlgence（オウルジェンス）は、AI・自動化・データ設計を中心としたデジタルソリューションを提供する個人事業ブランドです。
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        テクノロジーを、人の可能性を広げるために使う。
+                    </p>
+                    <div class="h-1 w-20 bg-gradient-to-r from-cyan to-blue-400 rounded"></div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="relative w-64 h-64">
+                        <!-- Abstract owl illustration with CSS -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="relative">
+                                <!-- Owl eyes -->
+                                <div class="flex gap-8 mb-4">
+                                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue-500 opacity-80 animate-pulse"></div>
+                                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan to-blue-500 opacity-80 animate-pulse" style="animation-delay: 0.5s;"></div>
+                                </div>
+                                <!-- Geometric pattern -->
+                                <div class="absolute -inset-8 border border-cyan opacity-20 rounded-full"></div>
+                                <div class="absolute -inset-16 border border-cyan opacity-10 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider absolute bottom-0 left-0 right-0"></div>
+    </section>
+
+    <!-- ③ Service Section -->
+    <section id="service" class="py-32 bg-gray-900 relative">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">Service</h2>
+                <p class="text-gray-400 text-sm">提供サービス</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Webサービス構築</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        ホームページや業務用Webツールを設計・開発します。
+                    </p>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">業務効率化設計</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Google Workspaceを中心に業務を自動化・最適化します。
+                    </p>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AIワークフロー実装</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        n8n・Difyを活用したAI連携、自動応答を構築します。
+                    </p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">データ設計・RAG構築</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        クラウドDBとAIを統合し、安全な知識検索を実現します。
+                    </p>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">システム開発支援</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        要件定義〜保守までを支援し、再現性ある構成を提供します。
+                    </p>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="glass-card p-8 rounded-xl hover:border-cyan transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-cyan bg-opacity-20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-opacity-30 transition-all">
+                        <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI研修・トレーニング</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        社内や個人向けに、ChatGPTやRAGなどのAI活用を体系的に学べる研修を提供します。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider absolute bottom-0 left-0 right-0"></div>
+    </section>
+
+    <!-- ④ Works Section -->
+    <section id="works" class="py-32 bg-gradient-to-b from-gray-900 to-navy relative">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">Works</h2>
+                <p class="text-gray-400 text-sm">実績</p>
+            </div>
+            
+            <div class="glass-card p-10 rounded-2xl border-l-4 border-cyan">
+                <h3 class="text-2xl font-semibold mb-8">AI業務自動化支援システム構築（2024）</h3>
+                
+                <div class="space-y-8">
+                    <div class="border-l-2 border-cyan border-opacity-30 pl-6">
+                        <h4 class="text-cyan font-semibold mb-3 uppercase text-sm tracking-wider">背景</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            定型業務の属人化と工数増加が課題。
+                        </p>
+                    </div>
+                    
+                    <div class="border-l-2 border-cyan border-opacity-30 pl-6">
+                        <h4 class="text-cyan font-semibold mb-3 uppercase text-sm tracking-wider">取り組み</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Google Workspace, n8n, Dify, RAGを活用し自動化を実現。
+                        </p>
+                    </div>
+                    
+                    <div class="border-l-2 border-cyan border-opacity-30 pl-6">
+                        <h4 class="text-cyan font-semibold mb-3 uppercase text-sm tracking-wider">成果</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            年間120時間削減・属人化業務ゼロ・AI精度90%以上。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider absolute bottom-0 left-0 right-0"></div>
+    </section>
+
+    <!-- ⑤ Vision Section -->
+    <section id="vision" class="py-32 relative overflow-hidden">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B0F19] via-[#1A2433] to-[#38BDF8]/10"></div>
+        <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <div class="mb-12">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">Vision</h2>
+                <p class="text-gray-400 text-sm">私たちのビジョン</p>
+            </div>
+            
+            <div class="space-y-6 text-2xl md:text-3xl leading-relaxed font-light">
+                <p>テクノロジーを、人の可能性を広げるために。</p>
+                <p>Owlgenceは、知性と創造性を融合させ、</p>
+                <p>人がより自由に思考し、創造できる社会を目指しています。</p>
+            </div>
+        </div>
+        <div class="section-divider absolute bottom-0 left-0 right-0"></div>
+    </section>
+
+    <!-- ⑥ Profile Section -->
+    <section id="profile" class="py-32 bg-gray-900 relative">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">Founder</h2>
+                <p class="text-gray-400 text-sm">代表プロフィール</p>
+            </div>
+            
+            <div class="glass-card p-10 rounded-2xl text-center max-w-2xl mx-auto">
+                <div class="mb-8">
+                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-cyan to-blue-500 mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-4xl font-bold text-navy">IT</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">高倉 一輝</h3>
+                    <p class="text-lg text-gray-400 mb-1">Itsuki Takakura</p>
+                    <p class="text-cyan text-sm uppercase tracking-wider">AIコンサルタント / システムエンジニア</p>
+                </div>
+                
+                <div class="text-gray-300 leading-relaxed space-y-4 text-left">
+                    <p>
+                        AI技術とシステム開発の知見を活かし、企業の業務効率化とデジタル変革を支援。
+                    </p>
+                    <p>
+                        Google Workspace、n8n、Difyなどのツールを組み合わせた実践的なソリューション提供を得意とする。
+                    </p>
+                    <p>
+                        テクノロジーを通じて、人々がより創造的な活動に集中できる環境づくりを目指している。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider absolute bottom-0 left-0 right-0"></div>
+    </section>
+
+    <!-- ⑦ Contact Section -->
+    <section id="contact" class="py-32 bg-gradient-to-b from-gray-900 to-offwhite text-navy relative">
+        <div class="section-divider absolute top-0 left-0 right-0"></div>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-cyan mb-2">Contact</h2>
+                <p class="text-gray-500 text-sm">お問い合わせ</p>
+            </div>
+            
+            <div class="bg-white p-10 rounded-2xl shadow-2xl border-t-4 border-cyan">
+                <p class="text-lg leading-relaxed mb-8 text-gray-700">
+                    AI導入・業務自動化・システム設計に関するご相談を随時受け付けています。<br>
+                    小さなご相談でもお気軽にお問い合わせください。
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+                    <a href="mailto:itsuki.takakura.biz@gmail.com" class="px-8 py-4 btn-gradient text-offwhite font-semibold rounded-lg text-center">
+                        お問い合わせフォーム
+                    </a>
+                </div>
+                
+                <div class="text-center">
+                    <a href="mailto:itsuki.takakura.biz@gmail.com" class="text-cyan hover:text-opacity-80 transition-colors inline-flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        itsuki.takakura.biz@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑧ Footer -->
+    <footer class="py-12 bg-offwhite text-navy border-t border-gray-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col items-center">
+                <!-- Copyright -->
+                <p class="text-sm text-gray-600">
+                    © 2025 Owlgence. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
