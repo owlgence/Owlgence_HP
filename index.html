@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="株式会社オウルジェンス - Claude Code・BigQuery・GASを活用したAI業務自動化・データ基盤構築の外部CxOコンサルティング">
-    <title>Owlgence Inc. - AIで、思考を加速する。</title>
+    <title>Owlgence Inc. — AIで、思考を加速する。</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,21 +12,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        ivory:   '#FAF7F0',
-                        cream:   '#F0EBE0',
-                        gold:    '#C4922A',
+                        ivory:        '#FAF7F0',
+                        cream:        '#F0EBE0',
+                        gold:         '#C4922A',
                         'gold-light': '#D4A84A',
                         'gold-dark':  '#9A6E18',
-                        charcoal:'#1E1A10',
-                        warm:    '#2C2413',
-                        muted:   '#7A6E5A',
+                        charcoal:     '#1E1A10',
+                        warm:         '#2C2413',
+                        muted:        '#7A6E5A',
+                        'hero-bg':    '#161007',
                     },
                     fontFamily: {
                         serif: ['Cormorant Garamond', 'serif'],
@@ -38,61 +39,41 @@
     </script>
 
     <style>
+        * { box-sizing: border-box; }
         body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
-        h1, h2.serif-heading { font-family: 'Cormorant Garamond', serif; }
+        h1, .serif { font-family: 'Cormorant Garamond', serif; }
 
-        /* Gold gradient text */
+        /* ── Gold gradient text ── */
         .gold-text {
-            background: linear-gradient(135deg, #C4922A 0%, #E8C56A 50%, #C4922A 100%);
+            background: linear-gradient(135deg, #B8811A 0%, #E8C56A 45%, #C4922A 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Thin gold divider line */
+        /* ── Thin gold divider ── */
         .gold-line {
             height: 1px;
-            background: linear-gradient(90deg, transparent 0%, #C4922A 40%, #C4922A 60%, transparent 100%);
-            opacity: 0.5;
+            background: linear-gradient(90deg, transparent 0%, #C4922A 35%, #C4922A 65%, transparent 100%);
+            opacity: 0.45;
         }
 
-        /* Corner ornament */
-        .ornament-border {
-            position: relative;
-        }
+        /* ── Corner ornament ── */
+        .ornament-border { position: relative; }
         .ornament-border::before,
         .ornament-border::after {
             content: '';
             position: absolute;
-            width: 24px; height: 24px;
-            border-color: #C4922A;
+            width: 28px; height: 28px;
+            border-color: rgba(196,146,42,0.45);
             border-style: solid;
-            opacity: 0.5;
         }
         .ornament-border::before { top: 0; left: 0; border-width: 1px 0 0 1px; }
         .ornament-border::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
 
-        /* Service card */
-        .service-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(196, 146, 42, 0.2);
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            border-color: rgba(196, 146, 42, 0.6);
-            box-shadow: 0 8px 32px rgba(196, 146, 42, 0.12);
-            transform: translateY(-2px);
-        }
-
-        /* Works card */
-        .works-card {
-            background: #FFFFFF;
-            border-left: 3px solid #C4922A;
-        }
-
-        /* Hero subtle texture */
+        /* ── Hero ── */
         .hero-section {
-            background: #1C1507;
+            background: #161007;
             position: relative;
             overflow: hidden;
         }
@@ -100,25 +81,89 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 70% 50%, rgba(196,146,42,0.12) 0%, transparent 60%);
+            background:
+                radial-gradient(ellipse at 75% 40%, rgba(196,146,42,0.10) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 70%, rgba(196,146,42,0.05) 0%, transparent 45%);
+        }
+        /* Subtle noise texture */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
         }
 
-        /* Fade-in animation */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
+        /* ── Service card ── */
+        .service-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(196,146,42,0.18);
+            transition: all 0.35s ease;
+            position: relative;
         }
-        .fade-in-1 { animation: fadeInUp 0.9s ease-out 0.1s both; }
-        .fade-in-2 { animation: fadeInUp 0.9s ease-out 0.35s both; }
-        .fade-in-3 { animation: fadeInUp 0.9s ease-out 0.6s both; }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #C4922A, #E8C56A);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+        .service-card:hover { border-color: rgba(196,146,42,0.4); box-shadow: 0 12px 40px rgba(196,146,42,0.10); transform: translateY(-3px); }
+        .service-card:hover::before { transform: scaleX(1); }
 
-        /* Section label */
+        /* ── Works card ── */
+        .works-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(196,146,42,0.15);
+            border-left: 3px solid #C4922A;
+        }
+
+        /* ── Stats ── */
+        .stat-item { border-right: 1px solid rgba(196,146,42,0.2); }
+        .stat-item:last-child { border-right: none; }
+
+        /* ── Section label ── */
         .section-label {
             font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 0.2em;
-            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            font-size: 0.7rem;
             text-transform: uppercase;
             color: #C4922A;
+        }
+
+        /* ── Company table ── */
+        .company-row { border-bottom: 1px solid rgba(196,146,42,0.12); }
+        .company-row:last-child { border-bottom: none; }
+
+        /* ── Fade-in animations ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-1 { animation: fadeInUp 1s ease-out 0.1s both; }
+        .fade-in-2 { animation: fadeInUp 1s ease-out 0.35s both; }
+        .fade-in-3 { animation: fadeInUp 1s ease-out 0.6s both; }
+        .fade-in-4 { animation: fadeInUp 1s ease-out 0.85s both; }
+
+        /* ── Scroll reveal (JS handles .is-visible) ── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Scroll indicator ── */
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50%       { transform: translateY(6px); opacity: 0.4; }
+        }
+        .scroll-indicator { animation: scrollBounce 2s ease-in-out infinite; }
+
+        /* Number counter */
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
         }
     </style>
 </head>
@@ -126,18 +171,19 @@
 <body class="bg-ivory text-warm antialiased">
 
     <!-- ===== HEADER ===== -->
-    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-8 py-4 flex items-center justify-between">
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-400 px-8 py-4 flex items-center justify-between">
         <a href="#hero" class="flex items-center gap-3">
-            <img src="./assets/owlgence-logo.png" alt="Owlgence logo" class="h-10 w-auto">
-            <span class="font-serif text-xl font-medium tracking-widest" style="color: inherit;">Owlgence</span>
+            <img src="./assets/owlgence-logo.png" alt="Owlgence" class="h-9 w-auto" style="mix-blend-mode: normal;">
+            <span class="font-serif text-lg tracking-widest font-medium" id="header-wordmark">Owlgence</span>
         </a>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex gap-10 text-sm tracking-widest uppercase font-light">
+        <nav class="hidden md:flex gap-10 text-xs tracking-widest uppercase font-light">
             <a href="#service" class="hover:text-gold transition-colors duration-200">Service</a>
             <a href="#works"   class="hover:text-gold transition-colors duration-200">Works</a>
             <a href="#vision"  class="hover:text-gold transition-colors duration-200">Vision</a>
-            <a href="#contact" class="hover:text-gold transition-colors duration-200">Contact</a>
+            <a href="#company" class="hover:text-gold transition-colors duration-200">Company</a>
+            <a href="#contact" class="hover:text-gold transition-colors duration-200 border border-gold px-4 py-1 hover:bg-gold hover:text-charcoal transition-all">Contact</a>
         </nav>
 
         <!-- Mobile menu btn -->
@@ -159,76 +205,115 @@
             <a href="#service" class="hover:text-gold transition-colors">Service</a>
             <a href="#works"   class="hover:text-gold transition-colors">Works</a>
             <a href="#vision"  class="hover:text-gold transition-colors">Vision</a>
+            <a href="#company" class="hover:text-gold transition-colors">Company</a>
             <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
         </nav>
     </div>
 
 
     <!-- ===== HERO ===== -->
-    <section id="hero" class="hero-section min-h-screen flex items-center justify-center relative pt-24">
+    <section id="hero" class="hero-section min-h-screen flex items-center justify-center relative">
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
 
-            <!-- Large owl SVG -->
-            <div class="flex justify-center mb-10 fade-in-1">
-                <div style="background: rgba(250,247,240,0.12); backdrop-filter: blur(4px); padding: 20px 24px; border: 1px solid rgba(196,146,42,0.25);">
-                    <img src="./assets/owlgence-logo.png" alt="Owlgence" class="h-20 w-auto">
-                </div>
+            <!-- Logo — no box, just the mark -->
+            <div class="flex justify-center mb-12 fade-in-1">
+                <img src="./assets/owlgence-logo.png" alt="Owlgence" class="h-24 w-auto">
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-serif font-light text-ivory mb-4 tracking-wide fade-in-1">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-ivory mb-6 tracking-wide fade-in-2" style="line-height:1.1;">
                 AIで、思考を加速する。
             </h1>
 
-            <div class="gold-line w-48 mx-auto my-6 fade-in-2"></div>
+            <div class="gold-line w-40 mx-auto my-8 fade-in-2"></div>
 
-            <p class="text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed tracking-wide fade-in-2">
-                株式会社オウルジェンス。<br>
-                Claude Code・BigQuery・GASを核に、業務を自律的に動くAIシステムへと変えます。
+            <p class="text-base md:text-lg text-gray-400 mb-4 max-w-xl mx-auto leading-relaxed tracking-wide fade-in-3">
+                株式会社オウルジェンス
+            </p>
+            <p class="text-sm text-gray-500 mb-14 max-w-2xl mx-auto leading-loose tracking-wide fade-in-3">
+                Claude Code・BigQuery・GASを核に、<br class="hidden md:inline">業務を自律的に動くAIシステムへと変えます。
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-3">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-4">
                 <a href="#service"
-                   class="px-10 py-3 border border-gold text-gold font-light tracking-widest uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-300">
-                    Service
+                   class="px-12 py-3.5 border border-gold text-gold font-light tracking-widest uppercase text-xs hover:bg-gold hover:text-charcoal transition-all duration-300">
+                    Our Services
                 </a>
                 <a href="#contact"
-                   class="px-10 py-3 bg-gold text-charcoal font-light tracking-widest uppercase text-sm hover:bg-gold-light transition-all duration-300">
-                    Contact
+                   class="px-12 py-3.5 bg-gold text-charcoal font-light tracking-widest uppercase text-xs hover:bg-gold-light transition-all duration-300">
+                    Contact Us
                 </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator fade-in-4">
+                <span class="text-xs tracking-widest text-gray-600 uppercase">Scroll</span>
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="bg-charcoal py-10 border-t border-b" style="border-color: rgba(196,146,42,0.2);">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
+                <div class="stat-item text-center py-6 px-4 reveal">
+                    <p class="stat-number text-4xl md:text-5xl text-ivory mb-1">10<span class="text-gold text-2xl">+</span></p>
+                    <p class="text-xs text-gray-500 tracking-widest uppercase mt-1">導入企業数</p>
+                </div>
+                <div class="stat-item text-center py-6 px-4 reveal" style="transition-delay:0.1s">
+                    <p class="stat-number text-4xl md:text-5xl text-ivory mb-1">3,000<span class="text-gold text-2xl">h+</span></p>
+                    <p class="text-xs text-gray-500 tracking-widest uppercase mt-1">自動化削減工数</p>
+                </div>
+                <div class="stat-item text-center py-6 px-4 reveal" style="transition-delay:0.2s">
+                    <p class="stat-number text-4xl md:text-5xl text-ivory mb-1">12,000<span class="text-gold text-2xl">+</span></p>
+                    <p class="text-xs text-gray-500 tracking-widest uppercase mt-1">移行データ件数</p>
+                </div>
+                <div class="stat-item text-center py-6 px-4 reveal" style="transition-delay:0.3s">
+                    <p class="stat-number text-4xl md:text-5xl text-ivory mb-1">100<span class="text-gold text-2xl">%</span></p>
+                    <p class="text-xs text-gray-500 tracking-widest uppercase mt-1">継続率</p>
+                </div>
             </div>
         </div>
     </section>
 
 
     <!-- ===== ABOUT ===== -->
-    <section id="about" class="py-28 bg-ivory">
+    <section id="about" class="py-32 bg-ivory">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-14">
+            <div class="text-center mb-16 reveal">
                 <p class="section-label mb-3">About</p>
                 <div class="gold-line w-16 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6 text-muted leading-relaxed">
-                    <p class="text-lg text-warm">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-6 text-muted leading-relaxed reveal">
+                    <h2 class="serif text-3xl font-light text-warm leading-relaxed">
+                        ツールではなく、<br><em>仕組みごと</em>内製化する。
+                    </h2>
+                    <div class="gold-line w-24"></div>
+                    <p class="text-warm text-base leading-loose">
                         株式会社オウルジェンスは、AI業務自動化・データ基盤構築を専門とする外部CxOコンサルティング会社です。
                     </p>
-                    <p>
+                    <p class="leading-loose">
                         CTO・CMO不在の経営者に伴走し、属人化した業務を自律的に動くAIシステムへと変えます。ツールを売るのではなく、仕組みごと内製化することが私たちのスタンスです。
                     </p>
-                    <p>
+                    <p class="leading-loose">
                         Claude Code・BigQuery・Google Apps Scriptを組み合わせることで、複雑なデータ処理から日次レポート生成・AIエージェント稼働まで、すべてを自動化します。
                     </p>
                     <div class="pt-2">
-                        <span class="inline-block border border-gold text-gold text-xs tracking-widest px-4 py-1 uppercase">Owlgence Inc. — Est. 2025</span>
+                        <span class="inline-block border border-gold text-gold text-xs tracking-widest px-4 py-1.5 uppercase">Est. 2025 — Tokyo, Japan</span>
                     </div>
                 </div>
 
-                <div class="flex justify-center">
-                    <div class="ornament-border p-12 text-center">
-                        <img src="./assets/owlgence-logo.png" alt="Owlgence" class="w-28 h-auto">
-                        <p class="font-serif text-lg text-warm mt-6 tracking-widest">Owlgence Inc.</p>
-                        <p class="text-xs text-muted tracking-widest mt-1">株式会社オウルジェンス</p>
+                <div class="flex justify-center reveal" style="transition-delay:0.15s">
+                    <div class="ornament-border p-14 text-center">
+                        <img src="./assets/owlgence-logo.png" alt="Owlgence" class="w-28 h-auto mx-auto">
+                        <div class="gold-line w-16 mx-auto my-6"></div>
+                        <p class="font-serif text-xl text-warm tracking-widest">Owlgence Inc.</p>
+                        <p class="text-xs text-muted tracking-widest mt-2">株式会社オウルジェンス</p>
                     </div>
                 </div>
             </div>
@@ -237,57 +322,58 @@
 
 
     <!-- ===== SERVICE ===== -->
-    <section id="service" class="py-28 bg-cream">
+    <section id="service" class="py-32 bg-cream">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-14">
+            <div class="text-center mb-16 reveal">
                 <p class="section-label mb-3">Service</p>
-                <div class="gold-line w-16 mx-auto"></div>
+                <h2 class="serif text-3xl md:text-4xl font-light text-warm mt-4">提供サービス</h2>
+                <div class="gold-line w-16 mx-auto mt-6"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">01</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">AIエージェント実装</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         Claude Codeを活用し、複数の専門AIが並列で自律稼働する業務エージェントを構築します。タスク管理・調査・実装まで人手不要で回る仕組みを実現します。
                     </p>
                 </div>
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal" style="transition-delay:0.05s">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">02</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">データ基盤構築（BQ移行）</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         スプレッドシート運用からBigQueryへの移行を設計・実装します。GASによる自動インポートで、翌朝には前日データが揃う状態を構築します。
                     </p>
                 </div>
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal" style="transition-delay:0.1s">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">03</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">業務自動化設計（GAS）</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         Google Apps Scriptを活用し、CSV取り込み・集計・レポート生成までを自動化します。属人化した定型業務をゼロにします。
                     </p>
                 </div>
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal" style="transition-delay:0.05s">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">04</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">AI秘書・Slack Bot構築</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         SlackからAIに指示を出すだけで、調査・実装・報告が完了するBotを構築します。経営者がスマートフォン一つで業務を動かせる環境を実現します。
                     </p>
                 </div>
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal" style="transition-delay:0.1s">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">05</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">データ分析・Looker Studio</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         BigQueryに蓄積したデータをLooker Studioでダッシュボード化します。広告効果・顧客動向・売上推移をリアルタイムで可視化します。
                     </p>
                 </div>
 
-                <div class="service-card p-8 rounded-sm">
-                    <div class="w-8 h-px bg-gold mb-6"></div>
+                <div class="service-card p-8 reveal" style="transition-delay:0.15s">
+                    <p class="font-serif text-gold text-4xl font-light mb-5 opacity-40">06</p>
                     <h3 class="font-serif text-xl font-medium text-warm mb-3">外部CTO・技術顧問</h3>
                     <p class="text-muted text-sm leading-relaxed">
                         技術選定・要件定義から運用保守まで伴走します。社内にエンジニアがいなくても、スケーラブルな技術基盤を持てる体制を整えます。
@@ -300,56 +386,63 @@
 
 
     <!-- ===== WORKS ===== -->
-    <section id="works" class="py-28 bg-ivory">
+    <section id="works" class="py-32 bg-ivory">
         <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-14">
+            <div class="text-center mb-16 reveal">
                 <p class="section-label mb-3">Works</p>
-                <div class="gold-line w-16 mx-auto"></div>
+                <h2 class="serif text-3xl md:text-4xl font-light text-warm mt-4">導入事例</h2>
+                <div class="gold-line w-16 mx-auto mt-6"></div>
             </div>
 
-            <div class="space-y-10">
+            <div class="space-y-8">
 
                 <!-- Case 1 -->
-                <div class="works-card p-10 rounded-sm">
+                <div class="works-card p-10 reveal">
                     <div class="flex flex-wrap items-center gap-3 mb-5">
-                        <span class="text-xs uppercase tracking-widest text-gold border border-gold px-3 py-1">美容・健康サービス業</span>
-                        <span class="text-muted text-xs">2025 – 2026</span>
+                        <span class="text-xs uppercase tracking-widest text-gold border border-gold px-3 py-1.5">美容・健康サービス業</span>
+                        <span class="text-muted text-xs tracking-wide">2025 – 2026</span>
                     </div>
-                    <h3 class="font-serif text-2xl font-medium text-warm mb-7">広告データ基盤のBigQuery移行・自動集計システム構築</h3>
-                    <div class="space-y-5">
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">課題</p>
+                    <h3 class="font-serif text-2xl font-medium text-warm mb-8">広告データ基盤のBigQuery移行・自動集計システム構築</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">課題</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
                             <p class="text-muted text-sm leading-relaxed">複数媒体の広告データが担当者ごとのスプレッドシートに散在。月次集計に数日かかり、意思決定が遅れていた。</p>
                         </div>
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">取り組み</p>
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">取り組み</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
                             <p class="text-muted text-sm leading-relaxed">全媒体データをBigQueryに統合し、GASによる毎日6時の自動インポートを構築。Looker StudioでKPIダッシュボードを整備した。</p>
                         </div>
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">成果</p>
-                            <p class="text-muted text-sm leading-relaxed">月次集計工数をほぼゼロ化。12,000件超のデータをエラーなく移行・自動更新。経営判断に必要なデータへのアクセスを即日化。</p>
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">成果</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
+                            <p class="text-muted text-sm leading-relaxed">月次集計工数をほぼゼロ化。12,000件超のデータをエラーなく移行・自動更新。経営判断データへのアクセスを即日化。</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Case 2 -->
-                <div class="works-card p-10 rounded-sm">
+                <div class="works-card p-10 reveal">
                     <div class="flex flex-wrap items-center gap-3 mb-5">
-                        <span class="text-xs uppercase tracking-widest text-gold border border-gold px-3 py-1">人材・コンサルティング業</span>
-                        <span class="text-muted text-xs">2025 – 2026</span>
+                        <span class="text-xs uppercase tracking-widest text-gold border border-gold px-3 py-1.5">人材・コンサルティング業</span>
+                        <span class="text-muted text-xs tracking-wide">2025 – 2026</span>
                     </div>
-                    <h3 class="font-serif text-2xl font-medium text-warm mb-7">営業・顧客管理システムの業務自動化</h3>
-                    <div class="space-y-5">
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">課題</p>
+                    <h3 class="font-serif text-2xl font-medium text-warm mb-8">営業・顧客管理システムの業務自動化</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">課題</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
                             <p class="text-muted text-sm leading-relaxed">CSVデータの手動取り込みや営業成績集計に毎日30分以上かかり、担当者が変わると業務が止まるリスクがあった。</p>
                         </div>
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">取り組み</p>
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">取り組み</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
                             <p class="text-muted text-sm leading-relaxed">GASによるCSV自動取り込み・日次処理の自動化を実装。AIエージェントが毎朝データを検証し、異常値を自動検知・報告する仕組みを構築した。</p>
                         </div>
-                        <div class="pl-5 border-l border-gold border-opacity-30">
-                            <p class="text-xs uppercase tracking-widest text-gold mb-2">成果</p>
+                        <div class="space-y-2">
+                            <p class="text-xs uppercase tracking-widest text-gold">成果</p>
+                            <div class="w-6 h-px bg-gold opacity-40 mb-3"></div>
                             <p class="text-muted text-sm leading-relaxed">日次作業をゼロ化。属人化リスクを排除し、担当者不在時も処理が止まらない体制を確立。</p>
                         </div>
                     </div>
@@ -361,39 +454,41 @@
 
 
     <!-- ===== VISION ===== -->
-    <section id="vision" class="py-28 bg-charcoal relative overflow-hidden">
-        <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(196,146,42,0.08) 0%, transparent 65%);"></div>
-        <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
-            <p class="section-label mb-3" style="color: #C4922A;">Vision</p>
-            <div class="gold-line w-16 mx-auto mb-14"></div>
-            <div class="space-y-6 font-serif text-2xl md:text-3xl font-light text-ivory leading-relaxed">
-                <p>テクノロジーを、人の可能性を広げるために。</p>
-                <p class="text-gray-400 text-xl md:text-2xl">AIが自律的に動く組織をつくることで、</p>
-                <p class="text-gray-400 text-xl md:text-2xl">経営者が本質的な判断と創造に集中できる社会を目指します。</p>
+    <section id="vision" class="py-36 bg-charcoal relative overflow-hidden">
+        <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(196,146,42,0.07) 0%, transparent 60%);"></div>
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+            <p class="section-label mb-4" style="color: #C4922A;">Vision</p>
+            <div class="gold-line w-16 mx-auto mb-16"></div>
+            <div class="space-y-5 font-serif font-light text-ivory leading-relaxed">
+                <p class="text-3xl md:text-4xl">テクノロジーを、人の可能性を広げるために。</p>
+                <p class="text-xl md:text-2xl text-gray-400 pt-4">AIが自律的に動く組織をつくることで、</p>
+                <p class="text-xl md:text-2xl text-gray-400">経営者が本質的な判断と創造に集中できる社会を目指します。</p>
             </div>
         </div>
     </section>
 
 
     <!-- ===== PROFILE ===== -->
-    <section id="profile" class="py-28 bg-cream">
+    <section id="profile" class="py-32 bg-cream">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="text-center mb-14">
+            <div class="text-center mb-16 reveal">
                 <p class="section-label mb-3">Founder</p>
                 <div class="gold-line w-16 mx-auto"></div>
             </div>
 
-            <div class="bg-ivory p-12 rounded-sm ornament-border text-center">
-                <div class="w-20 h-20 rounded-full bg-charcoal flex items-center justify-center mx-auto mb-6">
-                    <span class="font-serif text-2xl text-gold">IT</span>
+            <div class="bg-ivory p-12 md:p-16 ornament-border reveal">
+                <div class="text-center mb-8">
+                    <div class="w-20 h-20 rounded-full bg-charcoal flex items-center justify-center mx-auto mb-6">
+                        <span class="font-serif text-2xl text-gold">IT</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-medium text-warm mb-1">高倉 一輝</h3>
+                    <p class="text-muted text-sm mb-1 tracking-wide">Itsuki Takakura</p>
+                    <p class="text-xs uppercase tracking-widest text-gold mt-3">CEO / 外部CTO・AIコンサルタント</p>
                 </div>
-                <h3 class="font-serif text-2xl font-medium text-warm mb-1">高倉 一輝</h3>
-                <p class="text-muted text-sm mb-1">Itsuki Takakura</p>
-                <p class="text-xs uppercase tracking-widest text-gold mb-8">CEO / 外部CTO・AIコンサルタント</p>
 
-                <div class="gold-line w-24 mx-auto mb-8"></div>
+                <div class="gold-line w-24 mx-auto my-8"></div>
 
-                <div class="text-muted text-sm leading-relaxed space-y-4 text-left max-w-xl mx-auto">
+                <div class="text-muted text-sm leading-loose space-y-4 max-w-xl mx-auto">
                     <p>株式会社オウルジェンス代表。Claude Code・BigQuery・GASを核としたAI業務自動化の設計・実装を専門としています。</p>
                     <p>「ツールを教える」のではなく「自律的に動く仕組みごと作る」アプローチで、CTO・CMO不在の経営者に伴走します。</p>
                     <p>現在、複数社の外部CxOとして稼働中。スプレッドシートからBigQueryへのデータ基盤移行、AIエージェントによる業務全自動化を得意としています。</p>
@@ -403,67 +498,178 @@
     </section>
 
 
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="py-28 bg-ivory">
-        <div class="max-w-2xl mx-auto px-6">
-            <div class="text-center mb-14">
-                <p class="section-label mb-3">Contact</p>
-                <div class="gold-line w-16 mx-auto"></div>
+    <!-- ===== COMPANY ===== -->
+    <section id="company" class="py-32 bg-ivory">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="section-label mb-3">Company</p>
+                <h2 class="serif text-3xl md:text-4xl font-light text-warm mt-4">会社概要</h2>
+                <div class="gold-line w-16 mx-auto mt-6"></div>
             </div>
 
-            <div class="bg-white p-12 rounded-sm ornament-border text-center">
-                <p class="text-muted text-sm leading-relaxed mb-8">
-                    AI導入・業務自動化・データ基盤構築に関するご相談を随時受け付けております。<br>
-                    小さなご相談でもお気軽にどうぞ。
+            <div class="bg-white border border-gold border-opacity-20 reveal">
+                <table class="w-full text-sm">
+                    <tbody>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal w-1/3 bg-cream bg-opacity-50">会社名</th>
+                            <td class="py-5 px-8 text-warm leading-relaxed">株式会社オウルジェンス<br><span class="text-muted text-xs tracking-wide">Owlgence Inc.</span></td>
+                        </tr>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal bg-cream bg-opacity-50">代表者</th>
+                            <td class="py-5 px-8 text-warm">高倉 一輝（Itsuki Takakura）</td>
+                        </tr>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal bg-cream bg-opacity-50">設立</th>
+                            <td class="py-5 px-8 text-warm">2025年</td>
+                        </tr>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal bg-cream bg-opacity-50">所在地</th>
+                            <td class="py-5 px-8 text-warm leading-relaxed">
+                                〒101-0041<br>
+                                東京都千代田区神田須田町1丁目7番8号<br>
+                                VORT秋葉原Ⅳ 2F
+                            </td>
+                        </tr>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal bg-cream bg-opacity-50">事業内容</th>
+                            <td class="py-5 px-8 text-muted leading-loose">
+                                AIエージェント実装・業務自動化コンサルティング<br>
+                                データ基盤構築（BigQuery移行・設計）<br>
+                                Google Apps Script開発・運用<br>
+                                外部CTO・技術顧問
+                            </td>
+                        </tr>
+                        <tr class="company-row">
+                            <th class="text-left py-5 px-8 text-xs tracking-widest uppercase text-gold font-normal bg-cream bg-opacity-50">お問い合わせ</th>
+                            <td class="py-5 px-8">
+                                <a href="mailto:itsuki.takakura.biz@gmail.com" class="text-gold hover:text-gold-light transition-colors text-sm tracking-wide">
+                                    itsuki.takakura.biz@gmail.com
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-32 bg-cream">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="section-label mb-3">Contact</p>
+                <h2 class="serif text-3xl md:text-4xl font-light text-warm mt-4">お問い合わせ</h2>
+                <div class="gold-line w-16 mx-auto mt-6"></div>
+            </div>
+
+            <div class="bg-ivory p-12 md:p-16 ornament-border text-center reveal">
+                <p class="font-serif text-xl text-warm mb-4 font-light">まずはお気軽にご相談ください。</p>
+                <p class="text-muted text-sm leading-loose mb-10">
+                    AI導入・業務自動化・データ基盤構築に関するご相談を<br>随時受け付けております。小さなご相談でもどうぞ。
                 </p>
                 <a href="mailto:itsuki.takakura.biz@gmail.com"
-                   class="inline-block px-12 py-3 bg-gold text-charcoal text-sm uppercase tracking-widest hover:bg-gold-light transition-all duration-300">
-                    お問い合わせ
+                   class="inline-block px-14 py-4 bg-gold text-charcoal text-xs uppercase tracking-widest hover:bg-gold-light transition-all duration-300 mb-8">
+                    メールでお問い合わせ
                 </a>
-                <p class="mt-6 text-xs text-muted tracking-wide">itsuki.takakura.biz@gmail.com</p>
+                <div class="gold-line w-24 mx-auto mb-6"></div>
+                <p class="text-xs text-muted tracking-widest">itsuki.takakura.biz@gmail.com</p>
+                <p class="text-xs text-muted tracking-wide mt-2">〒101-0041 東京都千代田区神田須田町1丁目7番8号 VORT秋葉原Ⅳ 2F</p>
             </div>
         </div>
     </section>
 
 
     <!-- ===== FOOTER ===== -->
-    <footer class="py-10 bg-charcoal text-center">
-        <div class="flex justify-center mb-4">
-            <img src="./assets/owlgence-logo.png" alt="Owlgence" class="h-8 w-auto opacity-60">
+    <footer class="bg-charcoal pt-14 pb-8" style="border-top: 1px solid rgba(196,146,42,0.15);">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="./assets/owlgence-logo.png" alt="Owlgence" class="h-10 w-auto">
+                        <span class="font-serif text-lg text-ivory tracking-widest">Owlgence</span>
+                    </div>
+                    <p class="text-gray-600 text-xs leading-relaxed">
+                        AIで、思考を加速する。<br>
+                        株式会社オウルジェンス
+                    </p>
+                </div>
+
+                <!-- Nav -->
+                <div class="space-y-3">
+                    <p class="text-xs uppercase tracking-widest text-gold mb-4">Navigation</p>
+                    <nav class="flex flex-col gap-2.5 text-xs text-gray-500 tracking-wide">
+                        <a href="#about"   class="hover:text-gold transition-colors">About</a>
+                        <a href="#service" class="hover:text-gold transition-colors">Service</a>
+                        <a href="#works"   class="hover:text-gold transition-colors">Works</a>
+                        <a href="#vision"  class="hover:text-gold transition-colors">Vision</a>
+                        <a href="#company" class="hover:text-gold transition-colors">Company</a>
+                        <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
+                    </nav>
+                </div>
+
+                <!-- Address -->
+                <div class="space-y-3">
+                    <p class="text-xs uppercase tracking-widest text-gold mb-4">Address</p>
+                    <address class="not-italic text-gray-500 text-xs leading-loose">
+                        〒101-0041<br>
+                        東京都千代田区神田須田町<br>
+                        1丁目7番8号<br>
+                        VORT秋葉原Ⅳ 2F
+                    </address>
+                    <a href="mailto:itsuki.takakura.biz@gmail.com" class="block text-gray-600 text-xs hover:text-gold transition-colors mt-2">
+                        itsuki.takakura.biz@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="gold-line"></div>
+            <p class="text-center text-xs text-gray-700 tracking-widest mt-6">
+                © 2026 株式会社オウルジェンス. All rights reserved.
+            </p>
         </div>
-        <p class="text-xs text-gray-600 tracking-widest">© 2026 株式会社オウルジェンス. All rights reserved.</p>
     </footer>
 
 
     <!-- ===== JS ===== -->
     <script>
-        // Header color change on scroll
+        // ── Header behavior ──
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
-                header.style.background = 'rgba(250, 247, 240, 0.95)';
-                header.style.backdropFilter = 'blur(8px)';
-                header.style.borderBottom = '1px solid rgba(196, 146, 42, 0.15)';
-                header.style.color = '#1E1A10';
-            } else {
-                header.style.background = 'transparent';
-                header.style.backdropFilter = 'none';
-                header.style.borderBottom = 'none';
-                header.style.color = '#FAF7F0';
-            }
-        });
-        // Init header color for hero
-        header.style.color = '#FAF7F0';
+        const wordmark = document.getElementById('header-wordmark');
 
-        // Mobile menu
-        const mobileMenuBtn  = document.getElementById('mobile-menu-btn');
-        const mobileMenu     = document.getElementById('mobile-menu');
+        function updateHeader() {
+            if (window.scrollY > 60) {
+                header.style.cssText = 'background: rgba(250,247,240,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(196,146,42,0.15); color: #1E1A10; padding: 12px 32px;';
+                wordmark.style.color = '#1E1A10';
+            } else {
+                header.style.cssText = 'background: transparent; backdrop-filter: none; border-bottom: none; color: #FAF7F0; padding: 16px 32px;';
+                wordmark.style.color = '#FAF7F0';
+            }
+        }
+        window.addEventListener('scroll', updateHeader);
+        updateHeader();
+
+        // ── Mobile menu ──
+        const mobileMenuBtn   = document.getElementById('mobile-menu-btn');
+        const mobileMenu      = document.getElementById('mobile-menu');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
         mobileMenuBtn.addEventListener('click',  () => mobileMenu.classList.remove('hidden'));
         mobileMenuClose.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         mobileMenu.querySelectorAll('nav a').forEach(a =>
             a.addEventListener('click', () => mobileMenu.classList.add('hidden'))
         );
+
+        // ── Scroll reveal ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 
 </body>
